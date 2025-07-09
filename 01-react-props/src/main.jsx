@@ -5,7 +5,6 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App saludo= "Hola que tal" title = "G41A esto es un prop" />
-    <App saludo= "Hi" title = "this another component with diferent info" />
+    <App/>
   </StrictMode>,
 )
