@@ -4,6 +4,7 @@ const SearchBar = ({ handleSearch }) => {
   return (
     <div className='search-bar'>
       <input
+        className='search-input'
         type='text'
         placeholder='Search for Gifs...'
         value={searchTerm}
@@ -12,7 +13,9 @@ const SearchBar = ({ handleSearch }) => {
       <button
         className='search-button'
         onClick={() => { handleSearch(searchTerm) }}
-      />
+      >
+        Search
+      </button>
 
     </div>
   )
