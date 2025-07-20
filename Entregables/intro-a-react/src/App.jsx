@@ -1,12 +1,13 @@
-function App(props) {
+import Tarjeta from './components/Tarjeta'
+import './App.css'
 
-  
-  <Usuario nombre="Ana" />
+function App () {
   return (
     <>
-     <h1>Hola mundo</h1>
-     <h1>Hola, {props.nombre}!</h1>;
-     
+      <div>
+        <h1>Tarjeta de presentacion</h1>
+        <Tarjeta />
+      </div>
     </>
   )
 }
