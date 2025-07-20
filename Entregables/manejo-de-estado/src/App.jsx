@@ -1,33 +1,45 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [nuevoProducto, setNuevoProducto] = useState("");
+    const [productos, setProductos] = useState([]);
+
+  // Función para agregar un nuevo producto a la listano da video
+  const agregarProducto = () => {
+    if (nuevoProducto.trim() !== "") {
+      setProductos([...productos, nuevoProducto]);
+      setNuevoProducto("");
+    }
+  };
+
+  // Función para eliminar un producto de la lista
+  const eliminarProducto = (index) => {
+    const newTasks = productos.filter((_, i) => i !== index)
+    setProductos(newTasks)
+    // Completar la lógica para eliminar un producto
+  };
+ 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h2>Lista de Compras</h2>
+      <input
+        type="text"
+        value={nuevoProducto}
+        onChange={(e) => setNuevoProducto(e.target.value)}
+      />
+      <button onClick={agregarProducto}>Agregar</button>
+      <ul>
+        {productos.map((producto, index) => (
+          <li key={index}>
+            {producto}
+            <button onClick={() => eliminarProducto(index)}>Eliminar</button>
+          </li>
+        ))}
+      </ul>
+    </div>
     </>
   )
 }

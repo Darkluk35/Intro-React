@@ -1,12 +1,29 @@
 /* 1. Importar el hook useState */
 import { useState } from 'react'
+import ToDoItem from './componentes/ToDoItem'
 import './App.css'
 
 function App () {
-  /* 2. Creo el estado donde guardare la informacion del input */
+  /* 2. Creo el estado donde guardare la información del input */
   const [inputValue, setInputValue] = useState('')
-  /* 3.Crear una funcion que se ejecutara cuando haga clic en anadir */
-  const handleAdd = () => { console.log('Anadir tarea:', inputValue) }
+
+  /* 5. Crear un nuevo estado para manejar la lista de tareas */
+  const [tasks, setTasks] = useState([])
+
+  /* 3. Crear una función que se ejecutará cuando haga clic en añadir */
+  /* 6. Modificar la función para agregar tareas al estado tasks */
+  const handleAdd = () => {
+    // console.log('Añadir tarea:', inputValue)
+    setTasks([...tasks, inputValue])
+    setInputValue('') // Limpiar el input después de añadir la tarea
+  }
+
+  /* 7. Crear función para borrar una tarea */
+  const deleteTask = (index) => {
+    const newTasks = tasks.filter((_, i) => i !== index)
+    setTasks(newTasks)
+  }
+
   return (
     <>
       <h1>Todo List</h1>
@@ -18,10 +35,17 @@ function App () {
         onChange={(event) => setInputValue(event.target.value)}
       />
       <button onClick={handleAdd}>Añadir</button>
+      {/* ul>li{Item $}*3>button{Borrar} */}
       <ul>
-        <li>item 1<button>Eliminar</button></li>
-        <li>item 2<button>Eliminar</button></li>
-        <li>item 3<button>Eliminar</button></li>
+        {
+          tasks.map((task, index) => (
+            <ToDoItem
+              key={index}
+              todoName={task}
+              handleDelete={() => deleteTask(index)}
+            />
+          ))
+        }
       </ul>
     </>
   )

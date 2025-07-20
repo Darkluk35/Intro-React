@@ -6,10 +6,9 @@ const ToDoItem = ({ todoName, handleDelete }) => {
         className='delete-button'
         onClick={handleDelete}
       >
-        Eliminar
+        Borrar
       </button>
     </li>
   )
 }
-
 export default ToDoItem
