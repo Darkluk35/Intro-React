@@ -9,7 +9,6 @@ const Widget = ({ title, children }) => {
         Renderizamos lo que sea que nos pasen dentro al componente */}
         {children}
       </div>
-      Widget
 
     </div>
   )
