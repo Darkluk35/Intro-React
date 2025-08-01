@@ -3,12 +3,16 @@ import Home from '../pages/Home'
 import Characters from '../pages/Characters'
 import CharacterDetail from '../pages/CharacterDetail'
 import NotFound from '../pages/NotFound'
-const AppRoutes = () => {
+import Secret from '../pages/Secret'
+import RequireAuth from '../auth/RequireAuth'
+const AppRoutes = ({ isAuth }) => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/characters' element={<Characters />} />
       <Route path='/characters/:id' element={<CharacterDetail />} />
+      <Route path='/secret' element={<RequireAuth isAuth={isAuth}><Secret /></RequireAuth>} />
+      {/* Ruta para manejar 404 Not Found */}
       <Route path='*' element={<NotFound />} />
     </Routes>
   )
